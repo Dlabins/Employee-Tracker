@@ -23,6 +23,7 @@ function databaseQuestions(){
             message: "What would you like to view?",
             choices: ["Add department", "Add role", "Add employee", "View departments", "View roles", "View employees", "Make update to employee"]
         }
+        //switch statement to call various functions for execution in conjunction with which command line prompt the user chooses
     ]).then(function(val) {
         switch (val.choice) {
             case "Add department":
@@ -175,4 +176,51 @@ function addEmployee() {
         });
       });
   };
- 
+// function to update employee role
+  function updateEmployee() {
+    connection.query("SELECT employee.last_name, role.title FROM employee JOIN role ON employee.role_id = role.id;", function(err, res) {
+     if (err) throw err
+     console.log(res)
+    inquirer.prompt([
+          {
+            name: "choice",
+            type: "rawlist",
+            choices: function() {
+              var nameArray = [];
+              for (let i = 0; i < res.length; i++) {
+                nameArray.push(res[i].last_name);
+              }
+              return nameArray;
+            },
+            message: "Please enter the employee's last name!",
+          },
+          {
+            name: "role",
+            type: "input",
+            message: "Please enter the new employee's role (must be developer, intern, finance, or accounting"
+          },
+      ]).then(function(track) {
+        var roleId;
+        for (let i = 0; i < res.length; i++) {
+           if (res[i].first_name + res[i].last_name === res[i].choice){
+               roleId = res[i];
+           }
+        connection.query("UPDATE employee SET WHERE ?", 
+        {
+          last_name: track.lastName
+           
+        }, 
+        {
+          role_id: role
+           
+        }, 
+        function(err){
+            if (err) throw err
+            console.table(val)
+            databaseQuestions()
+        })
+    }
+    });
+  });
+
+  }
