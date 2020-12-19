@@ -106,7 +106,7 @@ function addEmployee() {
             type: "input",
             message: "What is the manager's name for this employee?"
         }
-    ]).then(function (track){
+    ]).then(function(track){
         const tracker = "INSERT INTO employee SET ?";
         connection.query(tracker, 
           { 
@@ -122,4 +122,57 @@ function addEmployee() {
         });
       })
   }
+  //function to add department via command line
+  function addDepartment(){ 
+    inquirer.prompt(
+        {
+          name: "addDepartment",
+          type: "input",
+          message: "Please enter the department name!",
+      }).then(function(track){
+        const tracker = "INSERT INTO department SET ?";
+        connection.query(tracker, 
+          { 
+            name: track.addDepartment 
+          }, 
+    function(err, data) {
+        if (err) throw err;
+        console.log("Department has been saved!");
+        databaseQuestions();
+        });
+      })
+  }
+  //function to add role via command line
+  function addRole(){ 
+    inquirer.prompt([
+        {
+          name: "role",
+          type: "input",
+          message: "Please enter the name of the role!",
+        },
+        {
+          name: "salary",
+          type: "input",
+          message: "Please enter the salary!",
+        },
+        {
+          name: "id",
+          type: "input",
+          message: "Please enter the department ID!",
+        },
+      ]).then(function (track){
+        const tracker = "INSERT INTO role SET ?";
+        connection.query(tracker, 
+          { 
+            title: track.role,
+            salary: track.salary,
+            department_id: track.id
+          }, 
+          function(err, data) {
+            if (err) throw err;
+            console.log("New role has been saved!");
+            databaseQuestions();
+        });
+      });
+  };
  
