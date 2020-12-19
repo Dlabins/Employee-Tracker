@@ -21,7 +21,7 @@ function databaseQuestions(){
             type: "list",
             name: "choice",
             message: "What would you like to view?",
-            choices: ["Add department", "Add role", "Add employee", "View departments", "View roles", "View employees", "Make update to employee"]
+            choices: ["Add department", "Add role", "Add employee", "View departments", "View role", "View employees", "Make update to employee"]
         }
         //switch statement to call various functions for execution in conjunction with which command line prompt the user chooses
     ]).then(function(val) {
@@ -147,7 +147,7 @@ function addEmployee() {
   function addRole(){ 
     inquirer.prompt([
         {
-          name: "role",
+          name: "title",
           type: "input",
           message: "Please enter the name of the role!",
         },
@@ -165,7 +165,7 @@ function addEmployee() {
         const tracker = "INSERT INTO role SET ?";
         connection.query(tracker, 
           { 
-            title: track.role,
+            title: track.title,
             salary: track.salary,
             department_id: track.id
           }, 
@@ -211,7 +211,7 @@ function addEmployee() {
            
         }, 
         {
-          role_id: role
+          role_id: track.role
            
         }, 
         function(err){

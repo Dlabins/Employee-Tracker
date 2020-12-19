@@ -37,4 +37,4 @@ VALUE ("David", "Labins", 2, 1);
 INSERT INTO department (name)
 VALUE ("Software");
 INSERT INTO role (title, salary, department_id)
-VALUE ("Intern", 30000, 2);
+VALUE ("Developer", 90000, 6);
