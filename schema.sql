@@ -31,4 +31,10 @@ CREATE TABLE employee (
 SELECT * FROM department;
 SELECT * FROM role;
 SELECT * FROM employee;
-
+-- inserted fake data entries for testing purposes
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("David", "Labins", 2, 1);
+INSERT INTO department (name)
+VALUE ("Software");
+INSERT INTO role (title, salary, department_id)
+VALUE ("Intern", 30000, 2);
