@@ -28,7 +28,7 @@ CREATE TABLE employee (
 
 -- Selects all from the 3 tables made above
 
-SELECT * FROM department;
+SELECT * FROM department:
 SELECT * FROM role;
 SELECT * FROM employee;
 -- inserted fake data entries for testing purposes
