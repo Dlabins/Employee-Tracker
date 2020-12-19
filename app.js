@@ -87,12 +87,12 @@ function viewDepartments() {
 function addEmployee() { 
     inquirer.prompt([
         {
-          name: "firstname",
+          name: "firstName",
           type: "input",
           message: "Please enter employee's first name!"
         },
         {
-          name: "lastname",
+          name: "lastName",
           type: "input",
           message: "Please enter employee's last name!"
         },
@@ -106,5 +106,20 @@ function addEmployee() {
             type: "input",
             message: "What is the manager's name for this employee?"
         }
-    ])
-}
+    ]).then(function (track){
+        const tracker = "INSERT INTO employee SET ?";
+        connection.query(tracker, 
+          { 
+            first_name: track.firstName,
+            last_name: track.lastName,
+            role_id: track.role,
+            manager_id: track.manager
+          }, 
+        function(err, data) {
+            if (err) throw err;
+            console.log("Employee has been saved!");
+            databaseQuestions();
+        });
+      })
+  }
+ 
