@@ -10,3 +10,5 @@ View departments, roles, employees
 Update employee roles.
 
 This application can be accessed at https://github.com/Dlabins/Employee-Tracker
+
+![snapshot](screenshot/tracker.png)

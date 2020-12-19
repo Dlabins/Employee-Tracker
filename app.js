@@ -197,7 +197,7 @@ function addEmployee() {
           {
             name: "role",
             type: "input",
-            message: "Please enter the new employee's role (must be developer, intern, finance, or accounting"
+            message: "Please enter the new employee's role"
           },
       ]).then(function(track) {
         var roleId;
